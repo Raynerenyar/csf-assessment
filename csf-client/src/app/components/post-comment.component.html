@@ -1,0 +1,24 @@
+<p>post-comment works!</p>
+<h1>Post Comment for {{selectedMovie.title}}</h1>
+<form [formGroup]="commentForm">
+    <div class="container">
+        <div>
+            Name:
+        </div>
+        <div>
+            <input formControlName="name" type="text">
+        </div>
+    </div>
+    <div class="container">
+        <div>
+            Rating:
+        </div>
+        <div>
+            <input formControlName="rating" type="number" name="" id="" min="1" max="5">
+        </div>
+    </div>
+    <div>Comment:</div>
+    <textarea formControlName="comment" name="" id="" cols="30" rows="10" placeholder="Type here"></textarea>
+</form>
+<button (click)="back()">Back</button>
+<button [disabled]="commentForm.invalid" (click)="postComment()">Post</button>

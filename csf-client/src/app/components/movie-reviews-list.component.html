@@ -1,0 +1,49 @@
+<div class="container">
+    <div>
+        <h1>Search Result</h1>
+    </div>
+    <div>
+        <button [routerLink]="['/']">Back</button>
+    </div>
+</div>
+<span *ngIf="movies.length != 0; else noMovies">
+
+    <ng-container *ngFor="let movie of movies">
+        <div style="border: 1px solid black;">
+            <div class="container">
+                <div>
+                    {{movie.title}}
+                </div>
+                <div>
+                    {{movie.rating}}
+                </div>
+            </div>
+            <div>
+                {{movie.summary}}
+            </div>
+            <div>
+                <a href="{{movie.reviewURL}}" target="_blank" >{{movie.reviewURL}}</a>
+            </div>
+            <div>
+                Comments: {{movie.commentCount}}
+            </div>
+            <div>
+                <ng-container *ngIf="movie.image != 'null'; else noImage">
+                    <img  src="{{movie.image}}" width="300">
+                </ng-container>
+            </div>
+            <div>
+                <button (click)="postComment(movie.title)">Comment</button>
+            </div>
+        </div>
+    </ng-container>
+</span>
+<ng-template #noImage>
+    <!-- check where to get image -->
+    <img src="/assets/images/placeholder.jpg" alt="" width="300">
+</ng-template>
+<ng-template #noMovies>
+    <div>
+        Your search produces no result.
+    </div>
+</ng-template>

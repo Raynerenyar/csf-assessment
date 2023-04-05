@@ -1,0 +1,15 @@
+<p>search-review-component works!</p>
+<p>Search Movie Reviews</p>
+<div class="container">
+    <form [formGroup]="movieSearchForm">
+        <div>Movie name: </div>
+        <div>
+            <input type="text" formControlName="movie">
+        </div>
+    </form>
+</div>
+<div>
+    <button type="submit" [disabled]="movieSearchForm.invalid" (click)="searchMovie()">
+        Search
+    </button>
+</div>
