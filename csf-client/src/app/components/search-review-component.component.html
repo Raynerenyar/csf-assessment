@@ -8,6 +8,23 @@
         </div>
     </form>
 </div>
+<div *ngIf="movieSearchForm.get('movie')?.errors?.['nonWhitespace']">
+    Trailing and leading whitespaces not allowed.
+</div>
+<div *ngIf="movieSearchForm.get('movie')?.errors?.['minlength']">
+    Minimum length is 2.
+</div>
+<!-- <ng-container *ngFor="let error of allErrors?.get('movie')">
+    <div *ngIf="error=='required'">
+        Movie name is mandatory.
+    </div>
+    <div *ngIf="error == 'minlength'">
+        Minimum length is 2.
+    </div>
+    <div *ngIf="error == 'nonWhitespace'">
+        Trailing and leading whitespaces not allowed.
+    </div>
+</ng-container> -->
 <div>
     <button type="submit" [disabled]="movieSearchForm.invalid" (click)="searchMovie()">
         Search
